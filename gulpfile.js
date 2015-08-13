@@ -5,7 +5,6 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     stylish = require('jshint-stylish'),
     minifyCss = require('gulp-minify-css'),
-    uglify = require('gulp-uglify'),
     copy = require('gulp-copy'),
     shell = require('gulp-shell'),
     del = require('del'),
@@ -51,6 +50,7 @@ gulp.task("webpack", ['clean'], function (callback) {
     }
 
     for (var i = 0, j = webpackConfig.length; i < j; i++) {
+        webpackConfig[i].bail = true;
         webpackConfig[i].plugins = [
             new webpack.optimize.UglifyJsPlugin()
         ];

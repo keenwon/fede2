@@ -47,6 +47,7 @@ if (!Object.prototype.toString.call(webpackConfig) === '[object Array]') {
 
 for (var i = 0, j = webpackConfig.length; i < j; i++) {
     webpackConfig[i].context = __dirname;
+    webpackConfig[i].bail = true;
     webpackConfig[i].plugins = [
         new ReplacePlugin(mapRules)
     ];
