@@ -1,4 +1,4 @@
-require('../../libs/jquery.min');
+require('../../libs/jquery');
 
 $(function () {
     console.log('jquery loaded');
