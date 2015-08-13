@@ -5,6 +5,7 @@
 ###demo
 
 ```shell
+demo
 ├── lazyLoad.hbs     #按需加载
 ├── library.hbs      #打包功能模块，可以和lazy load和code splitting结合使用
 ├── normal.hbs       #常规用法，所有文件打包在一起
