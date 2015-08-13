@@ -4,6 +4,12 @@
 
 ###demo
 
+将demo文件夹下的文件拷贝到根目录，并安装额外的webpack loader：  
+
+```shell
+npm install css-loader style-loader
+```
+
 ```shell
 demo
 ├── lazyLoad.hbs     #按需加载
