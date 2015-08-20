@@ -49,12 +49,12 @@ gulp.task("webpack", ['clean'], function (callback) {
         webpackConfig = [webpackConfig];
     }
 
-    for (var i = 0, j = webpackConfig.length; i < j; i++) {
-        webpackConfig[i].bail = true;
-        webpackConfig[i].plugins = [
+    webpackConfig.forEach(function (currentValue, i, array) {
+        array[i].bail = true;
+        array[i].plugins = [
             new webpack.optimize.UglifyJsPlugin()
         ];
-    }
+    });
 
     webpack(webpackConfig, function (err, stats) {
         if (err) {

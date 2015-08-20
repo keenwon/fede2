@@ -20,11 +20,9 @@ var path = require('path'),
 
 // views
 var helpers = require('./helpers')('development');
-for (var item in helpers) {
-    if (helpers.hasOwnProperty(item)) {
-        hbs.registerHelper(item, helpers[item]);
-    }
-}
+Object.keys(helpers).forEach(function (key) {
+    hbs.registerHelper(key, helpers[key]);
+});
 app.set('views', devDir);
 app.set('view engine', 'hbs');
 
@@ -45,13 +43,13 @@ if (!Object.prototype.toString.call(webpackConfig) === '[object Array]') {
     webpackConfig = [webpackConfig];
 }
 
-for (var i = 0, j = webpackConfig.length; i < j; i++) {
-    webpackConfig[i].context = __dirname;
-    webpackConfig[i].bail = true;
-    webpackConfig[i].plugins = [
+webpackConfig.forEach(function (currentValue, i, array) {
+    array[i].context = __dirname;
+    array[i].bail = true;
+    array[i].plugins = [
         new ReplacePlugin(mapRules)
     ];
-}
+});
 
 app.use(webpackDevMiddleware(webpack(webpackConfig), {
     publicPath: '/js/'

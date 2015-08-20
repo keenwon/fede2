@@ -27,10 +27,10 @@ ReplacePlugin.prototype.apply = function(compiler) {
 
             files.forEach(function(file) {
                 source = compilation.assets[file].source();
-                for (var rule in mapRules) {
+                Object.keys(mapRules).forEach(function (rule) {
                     reg = new RegExp(rule, 'gm');
                     source = source.replace(reg, mapRules[rule]);
-                }
+                });
                 compilation.assets[file] = new RawSource(source);
             });
 
