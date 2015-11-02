@@ -1,17 +1,16 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
-    handlebars = require('gulp-compile-handlebars'),
     rename = require('gulp-rename'),
     jshint = require('gulp-jshint'),
+    jade = require('gulp-jade'),
     stylish = require('jshint-stylish'),
     minifyCss = require('gulp-minify-css'),
     copy = require('gulp-copy'),
     shell = require('gulp-shell'),
     del = require('del'),
+    argv = require('optimist').argv,
     webpack = require('webpack'),
     webpackConfig = require('./webpack.config.js');
-
-var helpers = require('./bin/helpers');
 
 gulp.task('clean', function (cb) {
     del(['dist'], cb);
@@ -36,10 +35,17 @@ gulp.task('img', ['clean'], function () {
 });
 
 gulp.task('html', ['clean'], function () {
-    gulp.src('dev/**/*.hbs')
-        .pipe(handlebars(null, {helpers: helpers('production')}))
-        .pipe(rename(function (path) {
-            path.extname = '.html';
+    if (!argv.e) {
+        throw new gutil.PluginError("html", '请输入编译环境');
+    }
+
+    gulp.src(['dev/*.jade'])
+        .pipe(jade({
+            locals: {
+                development: argv.e === 'development',
+                production: argv.e = 'production'
+            },
+            pretty: true
         }))
         .pipe(gulp.dest('dist'));
 });

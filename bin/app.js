@@ -5,7 +5,6 @@ var path = require('path'),
 
     express = require('express'),
     app = express(),
-    hbs = require('hbs'),
     bodyParser = require('body-parser'),
     morgan = require('morgan'),
     mock = require('./mock'),
@@ -19,12 +18,8 @@ var path = require('path'),
     webpackConfig = require('../webpack.config.js');
 
 // views
-var helpers = require('./helpers')('development');
-Object.keys(helpers).forEach(function (key) {
-    hbs.registerHelper(key, helpers[key]);
-});
 app.set('views', devDir);
-app.set('view engine', 'hbs');
+app.set('view engine', 'jade');
 
 // bodyParser
 app.use(bodyParser.urlencoded({

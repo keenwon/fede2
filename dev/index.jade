@@ -1,0 +1,17 @@
+doctype html
+html(lang='en')
+  head
+    title fede2
+    if development
+      link(href='css/index.css', type='text/css', media='all', rel='stylesheet')
+    else if production
+      link(href='css/index.min.css', type='text/css', media='all', rel='stylesheet')
+    else
+      link(href='css/index.css', type='text/css', media='all', rel='stylesheet')
+
+  body
+    h2 Hello fede2!
+    p
+      | more infomation please view
+      a(href='https://github.com/keenwon/fede2', target='_blank') https://github.com/keenwon/fede2
+    script(src='js/index/main.js')
