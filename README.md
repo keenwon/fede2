@@ -5,6 +5,8 @@
 - 将AMD改为CommonJS，并且使用webpack打包，不需要使用require.js或almond.js等包加载器
 - 将handlebars替换为更加灵活强大的jade
 
+另外我的博客里有篇介绍文章：[http://keenwon.com/1496.html](http://keenwon.com/1496.html)
+
 ###demo
 
 1.0版本的有demo，具体的切换到tag 1.0查看
