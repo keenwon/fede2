@@ -34,7 +34,7 @@ if (fs.existsSync(mapFilePath)) {
     mapRules = require(mapFilePath);
 }
 
-if (!Object.prototype.toString.call(webpackConfig) === '[object Array]') {
+if (!(Object.prototype.toString.call(webpackConfig) === '[object Array]')) {
     webpackConfig = [webpackConfig];
 }
 
