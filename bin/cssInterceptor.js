@@ -21,7 +21,7 @@ function intercept(staticDir) {
         scssFilePath = path.join(staticDir, pathname.replace(/\.css/, '.scss'));
         if (fs.existsSync(scssFilePath)) {
             cssRender(scssFilePath, function (result) {
-                res.set('Content-Type', 'text/javascript; charset=UTF-8');
+                res.set('Content-Type', 'text/css');
                 res.end(result.css);
             });
         } else {
