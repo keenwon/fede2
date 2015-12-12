@@ -7,6 +7,9 @@
 
 另外我的博客里有篇介绍文章：[http://keenwon.com/1496.html](http://keenwon.com/1496.html)
 
-###demo
+###Demo
 
 1.0版本的有demo，具体的切换到tag 1.0查看
+
+###Changelog
+- 2.0.2 在本地调试服务中增加对Sass和PostCSS的支持
